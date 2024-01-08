@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 
 
 app = Flask(__name__)
@@ -12,6 +12,15 @@ def base():
 @app.route('/about')
 def about():
     return "about"
+
+@app.route('/hi')
+def hi():
+    params = request.args
+    
+    return {
+        "name": params['name'],
+        "age": params['age'],
+    }
 
 
 if __name__ == '__main__':
