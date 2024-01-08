@@ -13,14 +13,17 @@ def base():
 def about():
     return "about"
 
-@app.route('/hi')
+@app.route('/hi', mehtods=['GET', 'POST'])
 def hi():
-    params = request.args
-    
-    return {
-        "name": params['name'],
-        "age": params['age'],
-    }
+    if request.method == 'GET':
+        params = request.args
+        
+        return {
+            "name": params['name'],
+            "age": params['age'],
+        }
+    else:
+        return {"error": "method nor allowed."}
 
 
 if __name__ == '__main__':
