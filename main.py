@@ -1,30 +1,16 @@
 from flask import Flask, request
+import json
 
 
 app = Flask(__name__)
 
 
-@app.route('/')
-@app.route('/home')
-def base():
-    return "home"
+@app.route('/api')
+def api():
+    data = json.loads(request.data.decode())
 
-@app.route('/about')
-def about():
-    return "about"
-
-@app.route('/hi', mehtods=['GET', 'POST'])
-def hi():
-    if request.method == 'GET':
-        params = request.args
-        
-        return {
-            "name": params['name'],
-            "age": params['age'],
-        }
-    else:
-        return {"error": "method nor allowed."}
+    return {"result": data['a'] + data['b']}
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=8000)
+    app.run(debug=True)
