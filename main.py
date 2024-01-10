@@ -7,9 +7,9 @@ app = Flask(__name__)
 
 @app.route('/api')
 def api():
-    data = request.json
+    form = request.form
 
-    return {"result": data['a'] + data['b']}
+    return {"result": int(form['a']) + int(form['b'])}
 
 
 if __name__ == '__main__':
