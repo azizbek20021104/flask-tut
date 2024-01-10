@@ -5,11 +5,13 @@ import json
 app = Flask(__name__)
 
 
-@app.route('/api')
+@app.route('/api', methods=['POST'])
 def api():
-    form = request.form
+    values = request.values
 
-    return {"result": int(form['a']) + int(form['b'])}
+    print(values)
+
+    return {"result": 0}
 
 
 if __name__ == '__main__':
