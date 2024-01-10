@@ -1,14 +1,19 @@
-from flask import Flask, request
-import json
+from flask import Flask, request, render_template
 
 
 app = Flask(__name__)
 
 
-@app.route('/api/<int:a>/<int:b>', methods=['POST'])
-def api(a: int, b: int):
+@app.route('/<name>')
+def home(name: str):
+
+    title = 'Bosh sahifa'
     
-    return {"result": a + b}
+    return render_template('index.html', context={
+        "title": title,
+        "name": name
+        }
+    )
 
 
 if __name__ == '__main__':
