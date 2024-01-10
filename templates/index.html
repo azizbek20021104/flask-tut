@@ -5,5 +5,12 @@
 </head>
 <body>
     <h1>salom {{ context.name }}</h1>
+
+    <ul>
+        {% for num in context.nums %}
+            <li>{{ num }}</li>
+        {% endfor %}
+    </ul>
+
 </body>
 </html>

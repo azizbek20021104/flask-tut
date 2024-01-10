@@ -8,12 +8,14 @@ app = Flask(__name__)
 def home(name: str):
 
     title = 'Bosh sahifa'
-    
-    return render_template('index.html', context={
-        "title": title,
-        "name": name
-        }
-    )
+    nums = range(30)
+    return render_template('index.html', 
+                           context={
+                                "title": title,
+                                "name": name,
+                                "nums": nums
+                            }
+                        )
 
 
 if __name__ == '__main__':
